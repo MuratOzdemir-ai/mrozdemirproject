@@ -1,0 +1,21 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+{% load portfolio_filters %}
+
+{% block title %}{{ post.title }} - Murat Özdemir{% endblock %}
+
+{% block content %}
+<div class="page-bg animate__animated animate__fadeIn"
+     style="background-image: url('{% static 'images/blog_bg.jpg' %}'); background-size: cover; background-position: center;">
+    <div class="container py-5 text-white">
+        <div class="card shadow-lg bg-dark bg-opacity-75 text-white border-0 animate__animated animate__fadeInUp">
+            <div class="card-body p-5">
+                <h2 class="card-title display-5 fw-bold mb-4">{{ post.title }}</h2>
+                <p class="card-text text-muted mb-3">Yayınlanma: {{ post.created_at|date:"d F Y" }}</p>
+                <p class="card-text fs-5">{{ post.content }}</p>
+                <a href="{% url 'blog' %}" class="btn btn-gradient mt-4 px-4 py-2" aria-label="Blog listesine dön">← Blog</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+
+{% block title %}Ana Sayfa - Murat Özdemir{% endblock %}
+
+{% block content %}
+<div class="page-bg text-white d-flex align-items-center justify-content-center text-center animate__animated animate__fadeIn"
+     style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('{% static 'images/ai_bg_1.jpg' %}');
+            background-size: cover; background-position: center; min-height: 100vh;">
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10 col-lg-8">
+                <h1 class="display-3 fw-bold mb-4 animate__animated animate__fadeInDown"
+                    style="color: #f8f9fa; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);">
+                    Merhaba, Ben <span style="font-weight: normal; color: inherit;">Murat Özdemir</span>
+                </h1>
+                <p class="lead mb-4 animate__animated animate__fadeInUp"
+                   style="font-size: 1.25rem; color: #f8f9fa;">
+                    {% load i18n %}
+                    <h1>{% trans "Yazılım dünyasına yeni adım atan bir geliştiriciyim." %}</h1><br>{% trans "Web, Yapay Zeka ve Uygulama Geliştirme konularında projeler üretiyorum." %}
+                </p>
+                <a href="{% url 'projects' %}" class="btn btn-gradient btn-lg px-5 py-2 animate__animated animate__zoomIn"
+                   aria-label="Projeleri görüntüle">
+                    Projelerimi Gör
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Öne Çıkanlar Bölümü -->
+<div class="container py-5 bg-dark bg-opacity-75 text-white animate__animated animate__fadeIn">
+    <div class="row text-center">
+        <div class="col-md-4">
+            <h3>{{ projects_count }}</h3>
+            <p>Tamamlanan Proje</p>
+        </div>
+        <div class="col-md-4">
+            <h3>2+</h3>
+            <p>Yıl Deneyim</p>
+        </div>
+        <div class="col-md-4">
+            <h3>{{ certificates_count }}</h3>
+            <p>Sertifika</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

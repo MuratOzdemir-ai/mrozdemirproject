@@ -1,0 +1,13 @@
+from django import template
+
+register = template.Library()
+
+@register.filter
+def div(value, arg):
+    """
+    Değeri arg'a böler ve sonucu döndürür.
+    """
+    try:
+        return float(value) / float(arg)
+    except (ValueError, ZeroDivisionError):
+        return 0

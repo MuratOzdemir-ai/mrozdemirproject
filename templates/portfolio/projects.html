@@ -1,0 +1,43 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+{% load portfolio_filters %}
+
+{% block title %}Projeler - Murat Özdemir{% endblock %}
+
+{% block content %}
+<div class="page-bg animate__animated animate__fadeIn"
+     style="background-image: url('{% static 'images/projects_bg.jpg' %}'); background-size: cover; background-position: center;">
+    <div class="container py-5 text-white">
+        <h1 class="text-center fw-bold mb-5 display-4 animate__animated animate__fadeInDown">Projelerim</h1>
+
+        <!-- Arama ve Filtreleme -->
+        <form class="mb-4" method="GET">
+            <div class="input-group">
+                <input type="text" name="q" class="form-control" placeholder="Proje ara..." aria-label="Proje arama">
+                <button type="submit" class="btn btn-gradient" aria-label="Ara">Ara</button>
+            </div>
+        </form>
+        <div class="mb-4">
+            <a href="{% url 'projects' %}" class="btn btn-outline-light">Tümü</a>
+            <a href="{% url 'projects' %}?category=web" class="btn btn-outline-light">Web</a>
+            <a href="{% url 'projects' %}?category=ai" class="btn btn-outline-light">Yapay Zeka</a>
+            <a href="{% url 'projects' %}?category=app" class="btn btn-outline-light">Uygulama</a>
+        </div>
+
+        <div class="row g-4">
+            {% for project in projects %}
+            <div class="col-md-6 col-lg-4 animate__animated animate__fadeIn" style="animation-delay: {{ forloop.counter|div:10 }}s;">
+                <div class="card h-100 border-0 shadow project-card">
+                    <img src="{{ project.image.url }}" class="card-img-top rounded-top" alt="{{ project.title }}">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title fw-bold text-dark">{{ project.title }}</h5>
+                        <p class="card-text text-secondary">{{ project.description|truncatewords:20 }}</p>
+                        <a href="{% url 'project_detail' project.id %}" class="btn btn-gradient mt-auto" aria-label="{{ project.title }} detayları">Detay</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

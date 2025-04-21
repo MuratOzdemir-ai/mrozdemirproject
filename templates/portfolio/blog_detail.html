@@ -1,0 +1,16 @@
+<div class="container py-5">
+    <h2>{{ post.title }}</h2>
+    <p>{{ post.content }}</p>
+    <h3>Yorumlar</h3>
+    {% for comment in comments %}
+    <p><strong>{{ comment.author }}</strong>: {{ comment.content }}</p>
+    {% empty %}
+    <p>Henüz yorum yok.</p>
+    {% endfor %}
+    <h3>Yorum Yap</h3>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-gradient">Yorum Gönder</button>
+    </form>
+</div>

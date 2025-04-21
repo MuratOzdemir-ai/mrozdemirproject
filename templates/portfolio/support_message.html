@@ -1,0 +1,48 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+
+{% block title %}Destek Mesajı - Murat Özdemir{% endblock %}
+
+{% block content %}
+<div class="page-bg animate__animated animate__fadeIn"
+     style="background-image: url('{% static 'images/support_bg.jpg' %}'); background-size: cover; background-position: center; min-height: 100vh;">
+    <div class="container py-5">
+        <h1 class="text-center text-dark mb-5 animate__animated animate__fadeInDown">Destek Mesajı Gönder</h1>
+
+        <form method="POST" class="ajax-form">
+            {% csrf_token %}
+            <div class="form-container">
+                <div class="mb-3">
+                    <label for="name" class="form-label fw-bold text-dark">Adınız</label>
+                    {{ form.name|add_class:"form-control"|attr:"aria-describedby:nameHelp" }}
+                    <small id="nameHelp" class="form-text text-muted">Lütfen tam adınızı girin.</small>
+                </div>
+                <div class="mb-3">
+                    <label for="phone" class="form-label fw-bold text-dark">Telefon</label>
+                    {{ form.phone|add_class:"form-control"|attr:"aria-describedby:phoneHelp" }}
+                    <small id="phoneHelp" class="form-text text-muted">Telefon numaranızı girin.</small>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label fw-bold text-dark">E-posta</label>
+                    {{ form.email|add_class:"form-control"|attr:"aria-describedby:emailHelp" }}
+                    <small id="emailHelp" class="form-text text-muted">Geçerli bir e-posta adresi girin.</small>
+                </div>
+                <div class="mb-3">
+                    <label for="reason" class="form-label fw-bold text-dark">Sebep</label>
+                    {{ form.reason|add_class:"form-control"|attr:"aria-describedby:reasonHelp" }}
+                    <small id="reasonHelp" class="form-text text-muted">Destek sebebinizi seçin.</small>
+                </div>
+                <div class="mb-3">
+                    <label for="message" class="form-label fw-bold text-dark">Mesajınız</label>
+                    {{ form.message|add_class:"form-control"|attr:"aria-describedby:messageHelp" }}
+                    <small id="messageHelp" class="form-text text-muted">Mesajınızı detaylı yazın.</small>
+                </div>
+                <div id="form-message"></div>
+                <button type="submit" class="btn btn-gradient w-100" aria-label="Destek mesajı gönder">Gönder</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

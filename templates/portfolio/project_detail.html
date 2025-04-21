@@ -1,0 +1,20 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+
+{% block title %}{{ project.title }} - Murat Özdemir{% endblock %}
+
+{% block content %}
+<div class="page-bg text-white py-5 animate__animated animate__fadeIn"
+     style="background-image: url('{% static 'images/projects_bg.jpg' %}'); background-size: cover; background-position: center;">
+    <div class="container">
+        <div class="card shadow-lg bg-dark bg-opacity-75 text-white border-0 animate__animated animate__fadeInUp">
+            <img src="{{ project.image.url }}" class="card-img-top rounded-0" alt="{{ project.title }}">
+            <div class="card-body p-5">
+                <h2 class="card-title display-5 fw-bold mb-4">{{ project.title }}</h2>
+                <p class="card-text fs-5">{{ project.description }}</p>
+                <a href="{% url 'projects' %}" class="btn btn-gradient mt-4 px-4 py-2" aria-label="Tüm projelere dön">← Tüm Projeler</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

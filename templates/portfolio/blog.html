@@ -1,0 +1,27 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+{% load portfolio_filters %}
+{% block title %}Blog - Murat Özdemir{% endblock %}
+
+{% block content %}
+<div class="page-bg animate__animated animate__fadeIn"
+     style="background-image: url('{% static 'images/blog_bg.jpg' %}'); background-size: cover; background-position: center; min-height: 100vh;">
+    <div class="container py-5 text-white">
+        <h1 class="text-center fw-bold mb-5 display-4 animate__animated animate__fadeInDown">Blog</h1>
+
+        <div class="row g-4">
+            {% for post in posts %}
+            <div class="col-md-6 animate__animated animate__fadeIn" style="animation-delay: {{ forloop.counter|div:10 }}s;">
+                <div class="card h-100 border-0 shadow">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold text-dark">{{ post.title }}</h5>
+                        <p class="card-text text-secondary">{{ post.content|truncatewords:30 }}</p>
+                        <a href="{% url 'post_detail' post.slug %}" class="btn btn-gradient" aria-label="{{ post.title }} oku">Oku</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

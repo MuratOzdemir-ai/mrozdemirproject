@@ -1,0 +1,256 @@
+/* Mevcut stiller (önceki içeriği koruyoruz, sadece yeni kuralı ekliyoruz) */
+body {
+    background-color: #f8f9fa;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.page-bg {
+    background-image: url("/static/images/ai_bg_1.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #fff;
+    height: 100vh;
+    padding: 50px 0;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.page-bg h1 span {
+    color: #ffc107;
+}
+
+.btn-outline-light:hover {
+    background-color: #ffc107;
+    color: black;
+    border-color: #ffc107;
+}
+
+.btn-gradient {
+    background: linear-gradient(45deg, #ffc107, #ff8c00);
+    border: none;
+    color: #fff;
+}
+
+.btn-gradient:hover {
+    background: linear-gradient(45deg, #ff8c00, #ffc107);
+    color: #fff;
+}
+
+.container {
+    position: relative;
+    z-index: 2;
+}
+
+.form-container, .project-card, .card-body {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+    background-color: #343a40;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar-brand, .nav-link {
+    color: #fff !important;
+}
+
+.nav-link {
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #f1c40f;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-item a:hover {
+    color: #f1c40f !important;
+}
+
+h1, p, .card-title, .card-text {
+    color: #333;
+}
+
+.contact-background {
+    background-image: url("/static/images/contact_bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+    padding: 50px 0;
+}
+
+.project-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 12px;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.card-title {
+    font-size: 1.3rem;
+}
+
+.card-text {
+    font-size: 0.95rem;
+}
+
+#chat-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+#chat-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    cursor: pointer;
+}
+
+#chat-box {
+    width: 350px;
+    max-height: 80vh;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    position: absolute;
+    bottom: 70px;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    overflow: hidden;
+}
+
+#chat-box.hidden {
+    display: none;
+}
+
+.chat-header {
+    background: #007bff;
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.chat-body {
+    padding: 10px;
+    flex: 1;
+    overflow-y: auto;
+    font-size: 14px;
+    max-height: 400px;
+}
+
+.chat-input {
+    border: none;
+    border-top: 1px solid #ddd;
+    padding: 10px;
+    font-size: 14px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+@media (max-width: 576px) {
+    #chat-box {
+        width: 90vw;
+        max-height: 60vh;
+    }
+    .modal-dialog {
+        margin: 1rem;
+    }
+}
+
+/* Yeni Kural: Eğitim ve Başarı Linkleri için Siyah Renk */
+.education-achievements a {
+    color: #000 !important; /* Siyah renk */
+    text-decoration: none; /* Alt çizgiyi kaldır */
+    transition: color 0.3s ease;
+}
+
+.education-achievements a:hover {
+    color: #333 !important; /* Hover'da koyu gri */
+    text-decoration: underline; /* Hover'da alt çizgi ekle */
+}
+
+.education-achievements a:visited {
+    color: #000 !important; /* Tıklandıktan sonra siyah kal */
+}
+
+/* Home Container */
+.home-container {
+    width: 100%;
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Hero Bölümü */
+.page-bg {
+    flex-shrink: 0;
+}
+
+/* Öne Çıkanlar Bölümü */
+.bg-dark.bg-opacity-75 {
+    flex-shrink: 0;
+}
+
+.bg-dark.bg-opacity-75 h3 {
+    font-size: 1.5rem; /* Daha küçük başlık */
+    margin-bottom: 0.5rem;
+}
+
+.bg-dark.bg-opacity-75 p {
+    font-size: 0.9rem; /* Daha küçük metin */
+}
+
+/* Responsive Ayarları */
+@media (max-width: 768px) {
+    .page-bg h1 {
+        font-size: 2.5rem; /* Mobilde daha küçük başlık */
+    }
+    .page-bg p {
+        font-size: 0.95rem; /* Mobilde daha küçük açıklama */
+    }
+    .page-bg .btn {
+        padding: 0.5rem 1.5rem; /* Mobilde daha küçük buton */
+    }
+    .bg-dark.bg-opacity-75 h3 {
+        font-size: 1.2rem;
+    }
+    .bg-dark.bg-opacity-75 p {
+        font-size: 0.8rem;
+    }
+}

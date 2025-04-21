@@ -1,0 +1,24 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+
+{% block title %}Teşekkürler - Murat Özdemir{% endblock %}
+
+{% block content %}
+<div class="page-bg d-flex align-items-center justify-content-center text-center text-white animate__animated animate__fadeIn"
+     style="background-image: url('{% static 'images/thank_bg.jpg' %}');">
+    <div>
+        <h1 class="display-4 mb-3 animate__animated animate__fadeInDown">Teşekkürler!</h1>
+        <p class="lead mb-4 animate__animated animate__fadeInUp">
+            Mesajınız başarıyla iletildi. En kısa sürede sizinle iletişime geçeceğim.
+        </p>
+        <a href="{% url 'home' %}" class="btn btn-gradient mt-3 px-4 py-2 animate__animated animate__zoomIn"
+           aria-label="Anasayfaya dön">Anasayfaya Dön</a>
+    </div>
+</div>
+
+<script>
+    setTimeout(function() {
+        window.location.href = "{% url 'home' %}";
+    }, 5000); // 5 saniye sonra yönlendirme
+</script>
+{% endblock %}
