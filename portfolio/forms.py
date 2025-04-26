@@ -1,5 +1,7 @@
 from django import forms
 from .models import ContactMessage, SupportMessage, Comment
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 class ContactForm(forms.ModelForm):
     class Meta:
@@ -50,3 +52,11 @@ class CommentForm(forms.ModelForm):
             'author': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Adınız'}),
             'content': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Yorumunuz', 'rows': 4}),
         }
+
+class SignUpForm(UserCreationForm):
+    email = forms.EmailField(required=True)
+
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'password1', 'password2']
+

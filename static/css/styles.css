@@ -253,4 +253,31 @@ h1, p, .card-title, .card-text {
     .bg-dark.bg-opacity-75 p {
         font-size: 0.8rem;
     }
+    .page-bg {
+        background-attachment: scroll;
+    }
+}
+
+
+.btn-outline-primary:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-outline-success {
+    transition: all 0.3s ease;
+}
+
+.btn-outline-success:hover {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-outline-danger {
+    transition: all 0.3s ease;
+}
+
+.btn-outline-danger:hover {
+    background-color: #dc3545;
+    color: white;
 }

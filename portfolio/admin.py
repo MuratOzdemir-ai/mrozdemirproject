@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Project, ContactMessage, SupportMessage, Education, Achievement, Post
+from .models import Project, ContactMessage, SupportMessage, Education, Achievement, Post, Comment
 
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
@@ -38,3 +38,14 @@ class PostAdmin(admin.ModelAdmin):
     list_display = ('title', 'created_at')
     search_fields = ('title', 'content')
     prepopulated_fields = {'slug': ('title',)}
+
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ('author', 'post', 'created_at', 'approved')
+    list_filter = ('approved', 'created_at')
+    actions = ['approve_comments']
+
+    def approve_comments(self, request, queryset):
+        queryset.update(approved=True)
+
+    approve_comments.short_description = "Seçili yorumları onayla"

@@ -2,25 +2,31 @@ from pathlib import Path
 import os
 from django.utils.translation import gettext_lazy as _
 
+# Proje kök dizini
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-9kazuo3)@jxz4nav$e0c@0fx8=(s+iq8%h118a%x@j_r@j1po3'
+# Güvenlik için gizli anahtar (yerel ortamda varsayılan bir değer kullanıyoruz)
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-9kazuo3)@jxz4nav$e0c@0fx8=(s+iq8%h118a%x@j_r@j1po3')
 
+# Hata ayıklama modu (yerel ortamda True)
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# Yerel ortamda çalışırken localhost ve 127.0.0.1 ekliyoruz
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
+# Yüklü uygulamalar
 INSTALLED_APPS = [
-    'widget_tweaks',
-    'portfolio',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'widget_tweaks',
+    'portfolio',  # 'portfolio.apps.PortfolioConfig' yerine yalnızca 'portfolio' kullanıyoruz
 ]
 
+# Middleware'ler
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -31,14 +37,14 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# URL yapılandırması
 ROOT_URLCONF = 'mrozdemirproject.urls'
 
+# Şablon ayarları
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            BASE_DIR / 'templates',
-        ],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -51,8 +57,10 @@ TEMPLATES = [
     },
 ]
 
+# WSGI uygulaması
 WSGI_APPLICATION = 'mrozdemirproject.wsgi.application'
 
+# Veritabanı (yerel ortamda SQLite kullanıyoruz)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -60,6 +68,7 @@ DATABASES = {
     }
 }
 
+# Şifre doğrulama kuralları
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -75,23 +84,24 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Dil ve saat dilimi ayarları
 LANGUAGE_CODE = 'tr'  # Türkçe dil desteği
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_TZ = True
 
+# Statik dosyalar
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / "static"]
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-]
+# Medya dosyaları
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
+# Varsayılan otomatik alan tipi
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# settings.py sonuna ekle
+LOGIN_REDIRECT_URL = 'home'  # Oturum açtıktan sonra yönlendirilecek URL
+LOGOUT_REDIRECT_URL = 'home'  # Oturum kapattıktan sonra yönlendirilecek URL

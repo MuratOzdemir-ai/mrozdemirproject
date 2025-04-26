@@ -2,7 +2,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.http import JsonResponse
 from .models import Project, Education, Achievement, Post, Comment
-from .forms import ContactForm, SupportMessageForm, CommentForm
+from .forms import ContactForm, SupportMessageForm, CommentForm, SignUpForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login
 
 def home_view(request):
     projects_count = Project.objects.count()
@@ -12,6 +14,7 @@ def home_view(request):
         'certificates_count': certificates_count
     })
 
+@login_required
 def projects_view(request):
     category = request.GET.get('category')
     search_query = request.GET.get('q')
@@ -75,10 +78,6 @@ def blog_view(request):
     posts = Post.objects.all()
     return render(request, 'portfolio/blog.html', {'posts': posts})
 
-def blog_view(request):
-    posts = Post.objects.all()
-    return render(request, 'portfolio/blog.html', {'posts': posts})
-
 def blog_detail_view(request, pk):
     post = get_object_or_404(Post, pk=pk)
     comments = post.comments.filter(approved=True)
@@ -94,5 +93,25 @@ def blog_detail_view(request, pk):
         form = CommentForm()
     return render(request, 'portfolio/blog_detail.html', {'post': post, 'comments': comments, 'form': form})
 
+def signup_view(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login')
+    else:
+        form = SignUpForm()
+    return render(request, 'registration/signup.html', {'form': form})
 
 
+def login_view(request):
+    if request.method == "POST":
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            login(request, user)
+            return redirect('home')  # Kullanıcı giriş yaptıktan sonra yönlendirilmesini istediğiniz sayfa
+    else:
+        form = AuthenticationForm()
+
+    return render(request, 'portfolio/login.html', {'form': form})

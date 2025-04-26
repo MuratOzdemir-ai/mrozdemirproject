@@ -1,6 +1,6 @@
 from django.test import TestCase
 from django.urls import reverse
-from .models import Project, ContactMessage, Education, Achievement, Post
+from .models import Project, ContactMessage, Education, Achievement, Post, SupportMessage
 from django.utils.text import slugify
 
 class ProjectModelTest(TestCase):
@@ -108,3 +108,17 @@ class ViewTests(TestCase):
         )
         response = self.client.get(reverse('post_detail', args=[post.slug]))
         self.assertEqual(response.status_code, 200)
+
+
+class SupportMessageModelTest(TestCase):
+    def setUp(self):
+        self.message = SupportMessage.objects.create(
+            name="Jane Doe",
+            phone="1234567890",
+            email="jane.doe@example.com",
+            reason="technical",
+            message="This is a test support message."
+        )
+
+    def test_support_message_str(self):
+        self.assertEqual(str(self.message), "Jane Doe - technical")

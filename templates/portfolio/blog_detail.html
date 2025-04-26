@@ -1,3 +1,9 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+
+{% block title %}{{ post.title }} - Murat Özdemir{% endblock %}
+
+{% block content %}
 <div class="container py-5">
     <h2>{{ post.title }}</h2>
     <p>{{ post.content }}</p>
@@ -14,3 +20,4 @@
         <button type="submit" class="btn btn-gradient">Yorum Gönder</button>
     </form>
 </div>
+{% endblock %}

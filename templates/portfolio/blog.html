@@ -16,7 +16,7 @@
                     <div class="card-body">
                         <h5 class="card-title fw-bold text-dark">{{ post.title }}</h5>
                         <p class="card-text text-secondary">{{ post.content|truncatewords:30 }}</p>
-                        <a href="{% url 'post_detail' post.slug %}" class="btn btn-gradient" aria-label="{{ post.title }} oku">Oku</a>
+                        <a href="{% url 'blog_detail' post.slug %}" class="btn btn-gradient" aria-label="{{ post.title }} oku">Oku</a>
                     </div>
                 </div>
             </div>

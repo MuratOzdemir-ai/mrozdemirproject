@@ -1,0 +1,40 @@
+{% extends 'portfolio/base.html' %}
+
+{% block title %}Çıkış Yapıldı - Murat Özdemir{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4">
+            <div class="logout-container p-4 border rounded shadow-lg">
+                <h1 class="text-center mb-4">Başarıyla Çıkış Yaptınız</h1>
+                <p class="text-center">Güvenli bir şekilde çıkış yaptınız. Ana sayfaya yönlendiriliyorsunuz...</p>
+                <div class="text-center mt-4">
+                    <a href="{% url 'home' %}" class="btn btn-primary btn-block">Ana Sayfaya Git</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block styles %}
+<style>
+    .logout-container {
+        background: #f9f9f9;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        border-radius: 15px;
+    }
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        padding: 12px;
+        font-size: 16px;
+        border-radius: 8px;
+    }
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+</style>
+{% endblock %}
