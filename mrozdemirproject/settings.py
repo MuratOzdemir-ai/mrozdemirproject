@@ -9,10 +9,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-9kazuo3)@jxz4nav$e0c@0fx8=(s+iq8%h118a%x@j_r@j1po3')
 
 # Hata ayıklama modu (yerel ortamda True)
-DEBUG = True
+DEBUG = False
 
 # Yerel ortamda çalışırken localhost ve 127.0.0.1 ekliyoruz
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+#ALLOWED_HOSTS = ['mrozdemir-ai.club', '137.184.147.113']
 
 # Yüklü uygulamalar
 INSTALLED_APPS = [
